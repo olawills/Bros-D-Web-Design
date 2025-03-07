@@ -33,171 +33,177 @@ class HomePage extends StatelessWidget {
       'assets/images/logistic.png',
       'assets/images/electrical.png',
     ];
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isMobile = screenWidth < 768;
     return Scaffold(
+      // drawer: isMobile ? _buildSideDrawer(context) : null,
       body: SingleChildScrollView(
         child: Column(
           children: [
             // Header with Welcome and Navigation
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                // boxShadow: [
-                //   BoxShadow(
-                //     color: Colors.grey.withOpacity(0.2),
-                //     blurRadius: 2,
-                //     offset: const Offset(0, 1),
-                //   ),
-                // ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: TextFormField(
-                          keyboardType: TextInputType.text,
-                          style: Theme.of(context).textTheme.labelMedium,
-                          decoration: InputDecoration(
-                            suffixIcon: Icon(Icons.search, color: Colors.grey),
-                            fillColor: Color(0xfff1f1f1),
-                            filled: true,
-                            errorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              borderSide: BorderSide(
-                                color: Colors.red,
-                                width: 1,
-                                style: BorderStyle.solid,
-                              ),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              borderSide: BorderSide(
-                                color: Colors.red,
-                                width: 1,
-                                style: BorderStyle.solid,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              borderSide: BorderSide.none,
-                            ),
-                            contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 16,
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              borderSide: BorderSide.none,
-                            ),
-                            hintText: "Enter password",
-                            hintStyle: Theme.of(context).textTheme.labelMedium,
-                          ),
-                        ),
-                      ),
-                      Spacer(), // Add some spacing between the elements
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Column(
-                          crossAxisAlignment:
-                              CrossAxisAlignment
-                                  .end, // Better than using textAlign: TextAlign.right
-                          children: [
-                            Text(
-                              'Welcome, Amanda',
-                              style: TextStyle(
-                                color: Color(0xff3AB03A),
-                                fontSize: 24,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            Text(
-                              '1st December 2023',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 20),
-                      Icon(Icons.notifications),
-                      SizedBox(width: 30),
-                      Image.asset('assets/images/16.png', height: 40),
-                    ],
+            isMobile
+                ? SizedBox.shrink()
+                : Container(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 10,
+                    horizontal: 16,
                   ),
-                  const SizedBox(height: 30),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 12,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Color(0xff3AB03A),
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Expanded(
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //     color: Colors.grey.withOpacity(0.2),
+                    //     blurRadius: 2,
+                    //     offset: const Offset(0, 1),
+                    //   ),
+                    // ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Row(
                         children: [
-                          Image.asset('assets/images/bros-d.png', height: 40),
-                          const Spacer(),
-                          // Navigation items
-                          _navItem('Home'),
-                          _navItem('Product', hasDropdown: true),
-                          _navItem('Company', hasDropdown: true),
-                          _navItem('Help', hasDropdown: true),
-                          const SizedBox(width: 16),
-                          // Download button
-                          ElevatedButton(
-                            onPressed: () {},
-                            // clipBehavior: Clip.antiAliasWithSaveLayer,
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              foregroundColor: Theme.of(context).primaryColor,
-                              side: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                              ),
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 16,
-                                vertical: 16,
-                              ),
-                            ),
-                            child: const Text(
-                              'Download App',
-                              style: TextStyle(
-                                color: Color(0xffDC4848),
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
+                          Expanded(
+                            child: TextFormField(
+                              keyboardType: TextInputType.text,
+                              style: Theme.of(context).textTheme.labelMedium,
+                              decoration: InputDecoration(
+                                suffixIcon: Icon(
+                                  Icons.search,
+                                  color: Colors.grey,
+                                ),
+                                fillColor: Color(0xfff1f1f1),
+                                filled: true,
+                                errorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                  borderSide: BorderSide(
+                                    color: Colors.red,
+                                    width: 1,
+                                    style: BorderStyle.solid,
+                                  ),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                  borderSide: BorderSide(
+                                    color: Colors.red,
+                                    width: 1,
+                                    style: BorderStyle.solid,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                  borderSide: BorderSide.none,
+                                ),
+                                contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 16,
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                  borderSide: BorderSide.none,
+                                ),
+                                hintText: "Enter password",
+                                hintStyle:
+                                    Theme.of(context).textTheme.labelMedium,
                               ),
                             ),
                           ),
+                          Spacer(), // Add some spacing between the elements
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Column(
+                              crossAxisAlignment:
+                                  CrossAxisAlignment
+                                      .end, // Better than using textAlign: TextAlign.right
+                              children: [
+                                Text(
+                                  'Welcome, Amanda',
+                                  style: TextStyle(
+                                    color: Color(0xff3AB03A),
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                Text(
+                                  '1st December 2023',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(width: 20),
+                          Icon(Icons.notifications),
+                          SizedBox(width: 30),
+                          Image.asset('assets/images/16.png', height: 40),
                         ],
                       ),
-                    ),
+                      const SizedBox(height: 30),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 12,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Color(0xff3AB03A),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Expanded(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/images/bros-d.png',
+                                height: 40,
+                              ),
+                              const Spacer(),
+                              // Navigation items
+                              _navItem('Home'),
+                              _navItem('Product', hasDropdown: true),
+                              _navItem('Company', hasDropdown: true),
+                              _navItem('Help', hasDropdown: true),
+                              const SizedBox(width: 16),
+                              // Download button
+                              ElevatedButton(
+                                onPressed: () {},
+                                // clipBehavior: Clip.antiAliasWithSaveLayer,
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.white,
+                                  foregroundColor:
+                                      Theme.of(context).primaryColor,
+                                  side: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                    vertical: 16,
+                                  ),
+                                ),
+                                child: const Text(
+                                  'Download App',
+                                  style: TextStyle(
+                                    color: Color(0xffDC4848),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
+                ),
             SizedBox(height: 40),
             Container(
               padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                image: DecorationImage(
-                  image: const AssetImage('assets/green_bg.png'),
-                  fit: BoxFit.cover,
-                  colorFilter: ColorFilter.mode(
-                    Colors.green.withOpacity(0.1),
-                    BlendMode.lighten,
-                  ),
-                ),
-              ),
+              decoration: BoxDecoration(color: Colors.white),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -328,6 +334,7 @@ class HomePage extends StatelessWidget {
                       const SizedBox(height: 16),
                       GridView.builder(
                         shrinkWrap: true,
+
                         physics: NeverScrollableScrollPhysics(),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 4,
@@ -447,7 +454,9 @@ class HomePage extends StatelessWidget {
                         flex: 3,
                         child: Row(
                           children: [
-                            Image.asset("assets/images/map.png"),
+                            isMobile
+                                ? SizedBox.shrink()
+                                : Image.asset("assets/images/map.png"),
                             SizedBox(width: 40),
                             Expanded(
                               flex: 1,
@@ -498,18 +507,33 @@ class HomePage extends StatelessWidget {
                     child: Expanded(
                       child: Row(
                         children: [
-                          const Text(
-                            'Privacy Policy | Terms of Use | Refund Policy',
-                            style: TextStyle(color: Colors.white, fontSize: 12),
+                          FittedBox(
+                            child: const Text(
+                              'Privacy Policy | Terms of Use | Refund Policy',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                              ),
+                            ),
                           ),
                           const Spacer(),
-                          const Text(
-                            'We\'re social:',
-                            style: TextStyle(color: Colors.white, fontSize: 12),
+                          FittedBox(
+                            child: const Text(
+                              'We\'re social:',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                              ),
+                            ),
                           ),
                           const SizedBox(width: 8),
 
-                          Image.asset('assets/images/socials.png', height: 20),
+                          Flexible(
+                            child: Image.asset(
+                              'assets/images/socials.png',
+                              height: 20,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -576,7 +600,7 @@ class HomePage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: Center(
-                      child: Image.asset(imagePath, fit: BoxFit.contain),
+                      child: Image.asset(imagePath, fit: BoxFit.cover),
                     ),
                   ),
                   // Add button
@@ -586,11 +610,15 @@ class HomePage extends StatelessWidget {
                     child: Container(
                       width: 28,
                       height: 28,
+                      alignment: Alignment.center,
                       decoration: BoxDecoration(
                         color: Colors.green,
                         shape: BoxShape.circle,
                       ),
-                      child: Icon(Icons.add, color: Colors.white, size: 18),
+                      child: Text(
+                        '4',
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
                     ),
                   ),
                 ],
@@ -599,12 +627,14 @@ class HomePage extends StatelessWidget {
             // Title
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(
-                title,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 18,
+              child: FittedBox(
+                child: Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 18,
+                  ),
                 ),
               ),
             ),
@@ -689,11 +719,28 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  Drawer _buildSideDrawer(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          DrawerHeader(
+            decoration: BoxDecoration(color: Color(0xff3AB03A)),
+            child: Image.asset('assets/images/bros-d.png', height: 40),
+          ),
+          _navItem('Home'),
+          _navItem('Product'),
+          _navItem('Company'),
+          _navItem('Help'),
+        ],
+      ),
+    );
+  }
+
   Widget _contactField(String hint, {bool isMultiLine = false}) {
     return TextFormField(
       keyboardType: TextInputType.name,
       style: TextStyle(color: Colors.black, fontSize: 13),
-
       decoration: InputDecoration(
         errorStyle: const TextStyle(
           fontFamily: "ClashDisplay",
